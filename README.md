@@ -89,11 +89,9 @@ Most L1 analysis tools have used RepeatMasker's results as is. However, unlike t
 
 The MORE-reference (v1) uses the following regions of rc-L1.
 
--The regions from the 5-term UTR to the 3-term UTR, including full-length intact ORF1 and ORF2.
--The 3-term of the regions are the same as the conserved poly-A signal sequences closest to ORF2.
--In the case of the mouse, the monomer regions are excluded (as these are repetitive regions and will become an artifact factor of multi-mapping for analyses requiring mapping such as NGS).
-
-(図)
+- The regions from the 5-term UTR to the 3-term UTR, including full-length intact ORF1 and ORF2.
+- The 3-term of the regions are the same as the conserved poly-A signal sequences closest to ORF2.
+- In the case of the mouse, the monomer regions are excluded (as these are repetitive regions and will become an artifact factor of multi-mapping for analyses requiring mapping such as NGS).
 
 Following the above, we prepared GTF, BED, and FASTA-format files. `L1fli_Utr5toUtr3.GRCh38` is for human, and `L1fli_Utr5toUtr3.GRCm38` is for mouse. They correspond to the genomes of GRCh38 and GRCm38, respectively.
 The IDs assigned are based on the same-named fli (full-length intact) L1 entries in L1Base2.
@@ -112,6 +110,10 @@ ID905	{ ENSMUSG00000115329 }> 747 [ ID905 ]>	gene:ENSMUSG00000115329|location:fl
 ```
 `[` and `]` are the terminal ends of L1s, and `{` and `}` are shown as terminal-ends of the genes. `<` and `>` are indicated as arrowheads in the direction of each transcription (5' to 3'). Each number other than ensemble IDs and L1 IDs is the distance between the terminal ends.
 
+
+### "mart_export.102" files
+
+These files were originally created by Biomart on ENSEMBL release 102. These data files are not important for the reference directory, but the above "LIST_INTER_INTRA_GENE" files depend on them.
 
 
 ## Future Plan

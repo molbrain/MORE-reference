@@ -19,7 +19,7 @@ wget https://ftp.ensembl.org/pub/release-102/gtf/homo_sapiens/Homo_sapiens.GRCh3
 zcat Homo_sapiens.GRCh38.102.gtf.gz L1fli_Utr5toUtr3.GRCh38.gtf.gz > reference.gtf
 
 rsem-prepare-reference
-    --star --star-path star \
+    --star --star-path STAR \
     --gtf reference.gtf \
     --star-sjdboverhang 149 \
     Homo_sapiens.GRCh38.dna.primary_assembly.fa \
@@ -32,7 +32,7 @@ STAR --runMode alignReads
     --genomeDir ref \
     --readFilesCommand gunzip -c \
     --quantMode TranscriptomeSAM \
-    --readFilesIn YOUR_DATA/T1/data.R1.fastq.gz YOUR_DATA/T2/data.R1.fastq.gz\
+    --readFilesIn YOUR_DATA/data.R1.fastq.gz YOUR_DATA/data.R2.fastq.gz\
     --outSAMtype BAM SortedByCoordinate \
     --outSAMprimaryFlag AllBestScore \
     --outSAMmultNmax -1 \
@@ -42,9 +42,9 @@ rsem-calculate-expression \
 		--alignments \
 		--paired-end \
 		--append-names \
-		YOUR_DATA/T1/Aligned.sortedByCoord.out.bam \
-		.ref \
-		YOUR_DATA/T1/
+		YOUR_DATA/Aligned.sortedByCoord.out.bam \
+		./ref \
+		YOUR_DATA/
 
 ```
 
@@ -67,6 +67,8 @@ TEtranscripts --sortByPos --format BAM \
 
 ## HISAT2 is also OK to refer with MORE-reference
 
+## underconstruction
+
 hisat2-build \
     Homo_sapiens.GRCh38.dna.primary_assembly.fa \
     HISAT2_ref/GRCh38.102
@@ -81,7 +83,7 @@ CellRanger also uses the STAR as the mapping tool inside. So, like Example 1, th
 
 These reference files have been prepared to estimate and calculate the LINE-1 (L1) expression and novel insertion analysis. In this version (v1), the retrotransposition capable L1 (rc-L1) of humans and mice are listed in the GTF and BED format files, whose sequences correspond to the FASTA files. Additional annotations about the relationships of the rc-L1s and surrounding and flanking genes are also prepared as CSV files.
 
-Most L1 analysis tools have used RepeatMasker's results as is. However, unlike the actual L1 transcripts, their entries are often annotated not as a single entry but as some divided entries. This causes problems, such as the expression level of one rc-L1 being calculated as the expression level of two or more separate L1s. For this reason, we created a reference, MORE-reference, that has been curated in detail for these separated entries and for rc-L1s that were not detected by RepeatMasker but were identified in L1Base.
+Most L1 analysis tools have used RepeatMasker's results as is. However, unlike the actual L1 transcripts, their entries are often annotated not as a single entry but as some divided entries. This causes problems such as the expression level of one rc-L1 being calculated as the expression level of two or more separate L1s. For this reason, we created a reference, MORE-reference, that has been curated in detail for these separated entries and for rc-L1s that were not detected by RepeatMasker but were identified in L1Base.
 
 
 ### "L1fli_Utr5toUtr3" files
@@ -113,7 +115,11 @@ ID905	{ ENSMUSG00000115329 }> 747 [ ID905 ]>	gene:ENSMUSG00000115329|location:fl
 `[` and `]` are the terminal ends of L1s, and `{` and `}` are shown as terminal-ends of the genes. `<` and `>` are indicated as arrowheads in the direction of each transcription (5' to 3'). Each number other than ensemble IDs and L1 IDs is the distance between the terminal ends.
 
 
+### "mart_export.102" files
+
+These files were originally created by Biomart on ENSEMBL release 102. These data files are not important for the reference directory, but the above "LIST_INTER_INTRA_GENE" files depend on them.
+
 
 ## Future Plan
 
-We plan to support species other than humans and mice in the next version. We also plan to expand the reference to include expressible L1s other than non-rc-L1s. Furthermore, we are considering adding annotations for rc-L1, which has been observed to be polymorphic in human populations and specific lineages.
+In the next version, we plan to support species other than humans and mice. We also plan to expand the reference to include expressible L1s other than non-rc-L1s. Furthermore, we are considering adding annotations for rc-L1, which has been observed to be polymorphic in human populations and specific lineages.

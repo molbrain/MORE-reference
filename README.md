@@ -4,6 +4,13 @@
 
 The reference files and data are prepared for the MORE (Mobile-elements Originated Reads Enrichment) methods for sequencing data analysis. These files are available on bulk RNA-seq, WGS/WES, ChIP-seq, scRNA-seq, long-read sequencing analysis, etc. Of course, any other kind of analysis other than sequencing is also OK.
 
+## Citation
+
+Nakachi Y, Du J, Watanabe R, Yanagida Y, Bundo M and Iwamoto K. 
+MORE-RNAseq: A pipeline for qualifying retrotransposition-capable LINE1 expression based on RNA-seq data.
+Front Bioinform, 2025. In press.
+DOI: (not yet)
+
 ## Usage
 
 For one of the typical examples, please see the GitHub site for [MORE-RNAseq](https://github.com/molbrain/MORE-RNAseq).

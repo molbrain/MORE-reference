@@ -91,11 +91,9 @@ Most L1 analysis tools have used RepeatMasker's results as is. However, unlike t
 
 The MORE-reference (v1) uses the following regions of rc-L1.
 
--The regions from the 5-term UTR to the 3-term UTR, including full-length intact ORF1 and ORF2.
--The 3-term of the regions are the same as the conserved poly-A signal sequences closest to ORF2.
--In the case of the mouse, the monomer regions are excluded (as these are repetitive regions and will become an artifact factor of multi-mapping for analyses requiring mapping such as NGS).
-
-(図)
+- The regions from the 5-term UTR to the 3-term UTR, including full-length intact ORF1 and ORF2.
+- The 3-term of the regions are the same as the conserved poly-A signal sequences closest to ORF2.
+- In the case of the mouse, the monomer regions are excluded (as these are repetitive regions and will become an artifact factor of multi-mapping for analyses requiring mapping such as NGS).
 
 Following the above, we prepared GTF, BED, and FASTA-format files. `L1fli_Utr5toUtr3.GRCh38` is for human, and `L1fli_Utr5toUtr3.GRCm38` is for mouse. They correspond to the genomes of GRCh38 and GRCm38, respectively.
 The IDs assigned are based on the same-named fli (full-length intact) L1 entries in L1Base2.
